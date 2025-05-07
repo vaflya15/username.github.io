@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Кликай на сердце!</title>
+    <style>
+        body { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background: #111; 
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            background: #ff0000;
+            transform: rotate(45deg);
+            cursor: pointer;
+            position: relative;
+        }
+        .heart:before, .heart:after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background: inherit;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before { top: -50px; left: 0; }
+        .heart:after { top: 0; left: -50px; }
+    </style>
+</head>
+<body>
+    <div class="heart" onclick="changeColor()"></div>
+
+    <script>
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
+        let currentColor = 0;
+
+        function changeColor() {
+            currentColor = (currentColor + 1) % colors.length;
+            document.querySelector('.heart').style.background = colors[currentColor];
+        }
+    </script>
+</body>
+</html>
